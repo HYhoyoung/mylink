@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>마이링크 - 천호영</title>
+<meta name="description" content="천호영의 마이링크 - 나만의 링크 페이지">
+<meta property="og:title" content="마이링크 - 천호영">
+<meta property="og:description" content="나만의 링크 페이지">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+    min-height: 100vh;
+    background: linear-gradient(160deg, #1e3a8a 0%, #6d28d9 100%);
+    display: flex; justify-content: center; padding: 48px 16px;
+    color: #fff;
+  }
+  .wrap { width: 100%; max-width: 420px; text-align: center; }
+  .avatar {
+    width: 96px; height: 96px; border-radius: 50%; margin: 0 auto 16px;
+    background: #fff; color: #4c1d95; font-size: 40px; font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+  }
+  h1 { font-size: 22px; margin-bottom: 6px; }
+  .bio { font-size: 14px; opacity: .85; margin-bottom: 28px; }
+  .links { display: flex; flex-direction: column; gap: 12px; }
+  .links a {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 16px 20px; border-radius: 14px;
+    background: rgba(255,255,255,.95); color: #1f2937;
+    text-decoration: none; font-weight: 600; font-size: 15px;
+    transition: transform .15s;
+  }
+  .links a:hover { transform: translateY(-2px); }
+  .count { font-size: 12px; color: #6b7280; font-weight: 400; }
+  footer { margin-top: 36px; font-size: 12px; opacity: .6; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <!-- ▼ 여기 이름/소개를 바꾸세요 -->
+  <div class="avatar">천</div>
+  <h1>천호영</h1>
+  <p class="bio">한양대학교 산업공학과 · 바이브코딩으로 만든 마이링크</p>
+
+  <!-- ▼ 링크를 추가/수정하세요 (href = 주소, 글자 = 버튼 이름) -->
+  <div class="links">
+    <a href="https://github.com/" target="_blank">GitHub <span class="count"></span></a>
+    <a href="https://www.instagram.com/" target="_blank">Instagram <span class="count"></span></a>
+    <a href="https://www.youtube.com/" target="_blank">YouTube <span class="count"></span></a>
+    <a href="mailto:example@email.com">Email <span class="count"></span></a>
+  </div>
+
+  <footer>© 2026 MyLink · Made with Vibe Coding</footer>
+</div>
+
+<script>
+  // 클릭 통계 (13주차): 링크별 클릭 수를 이 브라우저에 저장
+  document.querySelectorAll('.links a').forEach(function (a, i) {
+    var key = 'mylink-click-' + i;
+    var span = a.querySelector('.count');
+    function show() {
+      var n = 0;
+      try { n = Number(localStorage.getItem(key)) || 0; } catch (e) {}
+      span.textContent = n + '회';
+    }
+    show();
+    a.addEventListener('click', function () {
+      try { localStorage.setItem(key, (Number(localStorage.getItem(key)) || 0) + 1); } catch (e) {}
+      show();
+    });
+  });
+</script>
+</body>
+</html>
